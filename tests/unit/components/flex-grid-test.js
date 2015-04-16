@@ -6,6 +6,7 @@ import Ember from 'ember';
 var App;
 
 var gridData = Ember.A([ { id: 1, title: 'A'}, { id: 2, title: 'B'}]);
+var columnProperties = Ember.A([ {field: 'id',  header: 'ID'} , {field:'title', header: 'TITLE'}]);
 
 moduleForComponent('flex-grid', 'FlexGridComponent', {
   beforeEach: function() {
@@ -34,6 +35,16 @@ test('row number is equal to length of dataSource', function(assert) {
 
   this.subject().willDestroyElement();
 });
+
+test('header number is equal to length of column', function(assert) {
+  var x = this.$();
+  var rowNum = $('table >thead >td').length;
+
+  assert.equal(rowNum, columnProperties.length);
+
+  this.subject().willDestroyElement();
+});
+
 
 
 
