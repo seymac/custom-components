@@ -1,7 +1,16 @@
+<thead>
+  <tr>
+  {{#each column in columnProperties}}
+      <td>
+        {{column.header}}
+      </td>
+  {{/each}}
+  </tr>
+</thead>
 <tbody>
   {{#each dat in dataSource}}
       <tr>
-          data
+          dat
       </tr>
   {{/each}}
 </tbody>
