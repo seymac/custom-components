@@ -1,7 +1,7 @@
 /**
  * Created by scakmak on 16/04/2015.
  */
-import { test, moduleForComponent } from 'ember-qunit';
+import { test, moduleFor } from 'ember-qunit';
 import startApp from '../../../helpers/start-app';
 import Ember from 'ember';
 
@@ -17,7 +17,7 @@ moduleFor('view:grid/row', 'RowView', {
 });
 
 test('is a row tag', function(assert) {
-  var tagName = this.$().prop('tagName');
+  var tagName = this.subject().tagName;
   var expectedTagName = 'tr';
   assert.equal(tagName, expectedTagName);
 
