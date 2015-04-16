@@ -9,9 +9,11 @@
 </thead>
 <tbody>
   {{#each dat in dataSource}}
-      <tr>
-          dat
-      </tr>
+    <tr>
+      {{#each column in columnProperties}}
+        <td>data</td>
+      {{/each}}
+    </tr>
   {{/each}}
 </tbody>
 

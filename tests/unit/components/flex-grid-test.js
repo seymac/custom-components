@@ -13,6 +13,7 @@ moduleForComponent('flex-grid', 'FlexGridComponent', {
     this.subject().set('dataSource', gridData);
     this.subject().set('columnProperties', columnProperties);
     App = startApp();
+    var x = this.$();
   },
   afterEach: function() {
     Ember.run(App, 'destroy');
@@ -29,8 +30,7 @@ test('is a table tag', function(assert) {
 
 
 test('row number is equal to length of dataSource', function(assert) {
-  var x = this.$();
-  var rowNum = $('table >tbody >tr').length;
+  var rowNum = $('table > tbody > tr').length;
 
   assert.equal(rowNum, gridData.length);
 
@@ -38,8 +38,7 @@ test('row number is equal to length of dataSource', function(assert) {
 });
 
 test('header number is equal to number of header in columnProperties', function(assert) {
-  var x = this.$();
-  var columnNum = $('table >thead >tr >td').length;
+  var columnNum = $('table > thead').find('> tr:first > td').length;
 
   assert.equal(columnNum, columnProperties.length);
 
@@ -47,8 +46,7 @@ test('header number is equal to number of header in columnProperties', function(
 });
 
 test('column number is equal to number of visible field in columnProperties', function(assert) {
-  var x = this.$();
-  var columnNum = $('table >tbody >tr >td').length;
+  var columnNum = $('table > tbody').find('> tr:first > td').length;
 
   assert.equal(columnNum, columnProperties.length);
 
