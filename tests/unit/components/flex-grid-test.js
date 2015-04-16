@@ -5,7 +5,7 @@ import Ember from 'ember';
 
 var App;
 
-var gridData = Ember.A([ { id: 1, title: 'A'}, { id: 2, title: 'B'}]);
+var gridData = Ember.A([ { id: 1, title: 'A', description: 'description-a'}, { id: 2, title: 'B', description: 'description-b'}]);
 var columnProperties = Ember.A([ {field: 'id',  header: 'ID'} , {field:'title', header: 'TITLE'}]);
 
 moduleForComponent('flex-grid', 'FlexGridComponent', {
@@ -37,9 +37,18 @@ test('row number is equal to length of dataSource', function(assert) {
   this.subject().willDestroyElement();
 });
 
-test('header number is equal to length of column', function(assert) {
+test('header number is equal to number of header in columnProperties', function(assert) {
   var x = this.$();
   var columnNum = $('table >thead >tr >td').length;
+
+  assert.equal(columnNum, columnProperties.length);
+
+  this.subject().willDestroyElement();
+});
+
+test('column number is equal to number of visible field in columnProperties', function(assert) {
+  var x = this.$();
+  var columnNum = $('table >tbody >tr >td').length;
 
   assert.equal(columnNum, columnProperties.length);
 
