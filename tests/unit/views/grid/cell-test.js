@@ -30,3 +30,11 @@ test('has columns tag', function(assert) {
   this.subject().willDestroyElement();
 });
 
+test('has template name cell', function(assert) {
+  var templateName = view.templateName;
+  var expectedTemplateName = 'grid/cell';
+  assert.equal(templateName, expectedTemplateName);
+
+  this.subject().willDestroyElement();
+});
+
