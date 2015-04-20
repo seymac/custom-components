@@ -8,12 +8,10 @@
   </tr>
 </thead>
 <tbody>
-  {{#each dat in dataSource}}
-    <tr>
-      {{#each column in columnProperties}}
-        <td>data</td>
-      {{/each}}
-    </tr>
+  {{#each rowData in dataSource}}
+
+    {{view 'grid/row' content=rowData columnProperties = columnProperties}}
+
   {{/each}}
 </tbody>
 

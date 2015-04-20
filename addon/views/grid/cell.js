@@ -6,14 +6,12 @@ import Ember from 'ember';
 export default Ember.View.extend({
   tagName: 'td',
   templateName: 'grid/cell',
-  rowContent: {},
+  rowContent: Ember.Object.create({}),
   fieldName: '',
 
   content: Ember.computed( 'rowContent', 'fieldName', function(){
     var rowContent = this.get('rowContent');
     var fieldName = this.get('fieldName');
     return rowContent.get(fieldName);
-  }),
-
-  variableTemp: 'dasdkjnsakdb jhadjkshd'
+  })
 });

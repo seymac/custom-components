@@ -5,10 +5,12 @@ import Ember from 'ember';
 
 var App;
 
-var gridData = Ember.A([ { id: 1, title: 'A', description: 'description-a'}, { id: 2, title: 'B', description: 'description-b'}]);
+var gridData = Ember.A([ Ember.Object.create({ id: 1, title: 'A', description: 'description-a'}), Ember.Object.create({ id: 2, title: 'B', description: 'description-b'})]);
 var columnProperties = Ember.A([ {field: 'id',  header: 'ID'} , {field:'title', header: 'TITLE'}]);
 
 moduleForComponent('flex-grid', 'FlexGridComponent', {
+  needs: ['view:grid/row', 'template:grid/row', 'view:grid/cell', 'template:grid/cell'],
+
   beforeEach: function() {
     this.subject().set('dataSource', gridData);
     this.subject().set('columnProperties', columnProperties);
