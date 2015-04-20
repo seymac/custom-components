@@ -5,5 +5,15 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
   tagName: 'td',
-  templateName: 'grid/cell'
+  templateName: 'grid/cell',
+  rowContent: {},
+  fieldName: '',
+
+  content: Ember.computed( 'rowContent', 'fieldName', function(){
+    var rowContent = this.get('rowContent');
+    var fieldName = this.get('fieldName');
+    return rowContent.get(fieldName);
+  }),
+
+  variableTemp: 'dasdkjnsakdb jhadjkshd'
 });

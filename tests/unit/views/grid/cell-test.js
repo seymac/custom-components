@@ -9,14 +9,14 @@ import Ember from 'ember';
 var App;
 
 var view;
-var content = Ember.Object.create({ id: 1, title: 'A', description: 'description-a'});
+var rowContent = Ember.Object.create({ id: 1, title: 'A', description: 'description-a'});
 var fieldName = 'id';
 
 moduleFor('view:grid/cell', 'CellView', {
 
   beforeEach: function() {
     view = this.subject({
-      content: content,
+      rowContent: rowContent,
       fieldName: fieldName
     });
     App = startApp();
@@ -44,9 +44,9 @@ test('has template name cell', function(assert) {
 });
 
 
-test('shows given field of content', function(assert) {
-  var cellContent = view.get('cellContent');
-  var expectedCellContent = content.get(fieldName);
+test('shows given field of rowContent', function(assert) {
+  var cellContent = view.get('content');
+  var expectedCellContent = rowContent.get(fieldName);
   assert.equal(cellContent, expectedCellContent);
 
   this.subject().willDestroyElement();

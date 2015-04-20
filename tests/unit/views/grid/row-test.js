@@ -35,7 +35,7 @@ test('is a row tag', function(assert) {
   this.subject().willDestroyElement();
 });
 
-test('get content from outside', function(assert) {
+test('get rowContent from outside', function(assert) {
   var actualContent = view.get('content');
   assert.equal(actualContent, content);
 
