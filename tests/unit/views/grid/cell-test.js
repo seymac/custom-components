@@ -9,11 +9,16 @@ import Ember from 'ember';
 var App;
 
 var view;
+var content = Ember.Object.create({ id: 1, title: 'A', description: 'description-a'});
+var fieldName = 'id';
 
 moduleFor('view:grid/cell', 'CellView', {
 
   beforeEach: function() {
-    view = this.subject();
+    view = this.subject({
+      content: content,
+      fieldName: fieldName
+    });
     App = startApp();
   },
   afterEach: function() {
@@ -38,3 +43,11 @@ test('has template name cell', function(assert) {
   this.subject().willDestroyElement();
 });
 
+
+test('shows given field of content', function(assert) {
+  var cellContent = view.get('cellContent');
+  var expectedCellContent = content.get(fieldName);
+  assert.equal(cellContent, expectedCellContent);
+
+  this.subject().willDestroyElement();
+});
