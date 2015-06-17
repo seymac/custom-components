@@ -11,5 +11,19 @@ export default Ember.Component.extend({
   	var pageLength = this.get('pageLength');
 
   	return Math.ceil(dataSource.length / pageLength);
+  }),
+
+  paginatedContent: Ember.computed('dataSource', 'currentPage', 'pageLength', function(){
+  	var dataSource = this.get('dataSource');
+  	var currentPage = this.get('currentPage');
+  	var pageLength = this.get('pageLength');
+  	var paginatedContent = Ember.A([]);
+
+  	for(var i = (currentPage - 1) * pageLength; i < currentPage * pageLength ; i++){
+  		if(dataSource.get(i)){
+  			paginatedContent.push(dataSource.get(i));
+  		}
+  	}
+  	return paginatedContent;
   })
 });
