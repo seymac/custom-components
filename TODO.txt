@@ -1,0 +1,5 @@
+
+- Add pagination
+- Add sorting
+- Add filter
+- Add custom template to columnProperties to show cells
