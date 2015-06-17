@@ -1,17 +1,22 @@
-<thead>
-  <tr>
-  {{#each column in columnProperties}}
-      <td>
-        {{column.header}}
-      </td>
-  {{/each}}
-  </tr>
-</thead>
-<tbody>
-  {{#each rowData in dataSource}}
+<table>
+  <thead>
+    <tr>
+    {{#each column in columnProperties}}
+        <td>
+          {{column.header}}
+        </td>
+    {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rowData in dataSource}}
 
-    {{view 'grid/row' content=rowData columnProperties = columnProperties}}
+      {{view 'grid/row' content=rowData columnProperties = columnProperties}}
 
-  {{/each}}
-</tbody>
+    {{/each}}
+  </tbody>
+</table>
+
+{{pagination-ui totalPageNumber=totalPageNumber currentPage = currentPage}}
+
 
