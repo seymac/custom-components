@@ -13,8 +13,8 @@ export default Ember.Component.extend({
   	return Math.ceil(dataSource.length / pageLength);
   }),
 
-  paginatedContent: Ember.computed('dataSource', 'currentPage', 'pageLength', function(){
-  	var dataSource = this.get('dataSource');
+  paginatedContent: Ember.computed('sortedList.arrangedContent', 'currentPage', 'pageLength', function(){
+  	var dataSource = this.get('sortedList.arrangedContent');
   	var currentPage = this.get('currentPage');
   	var pageLength = this.get('pageLength');
   	var paginatedContent = Ember.A([]);
@@ -25,5 +25,25 @@ export default Ember.Component.extend({
   		}
   	}
   	return paginatedContent;
-  })
+  }),
+
+  sortedList: Ember.computed( 'dataSource', function() {
+  	var dataSource = this.get('dataSource');
+    return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+      sortProperties: [],
+      sortAscending: true,
+      content: dataSource
+    });
+  }),
+
+  actions: {
+
+  	sortColumn: function(column){
+  		var field = column['field'];
+  		var sortedList = this.get('sortedList');
+
+  		sortedList.set('sortProperties', [field]);
+  		sortedList.set('sortAscending', false);
+  	}
+  }
 });

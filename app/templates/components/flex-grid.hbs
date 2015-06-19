@@ -3,7 +3,10 @@
     <tr>
     {{#each column in columnProperties}}
         <td>
-          {{column.header}}
+          <i class="fa fa-sort"></i>
+          <a {{action 'sortColumn' column}}>
+            {{column.header}}
+          </a>
         </td>
     {{/each}}
     </tr>
